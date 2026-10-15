@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}"
+    ],
+    "liveServer.settings.port": 5501
+}

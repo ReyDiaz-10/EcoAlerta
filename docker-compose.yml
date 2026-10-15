@@ -1,0 +1,21 @@
+services:
+  api:
+    build:
+      context: ./ecoalerta-backend
+    env_file:
+      - ./ecoalerta-backend/.env
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - ecoalerta_reports:/app/data/informes_pdf
+    read_only: true
+    tmpfs:
+      - /tmp:size=128m,mode=1777
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+
+volumes:
+  ecoalerta_reports:

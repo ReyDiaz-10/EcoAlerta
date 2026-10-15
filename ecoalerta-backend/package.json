@@ -1,0 +1,23 @@
+{
+  "name": "ecoalerta-backend",
+  "version": "2.3.2",
+  "description": "Backend para la aplicación ambiental EcoAlerta con motor de riesgo integrado",
+  "main": "server.js",
+  "scripts": {
+    "start": "python -m uvicorn app.main:app --host 0.0.0.0 --port 8000",
+    "dev": "python -m uvicorn app.main:app --reload --port 8000",
+    "legacy:start": "node server.js"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.12.0",
+    "@supabase/supabase-js": "^2.108.1",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.1.5",
+    "mongoose": "^8.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "author": "Farid",
+  "license": "MIT"
+}

@@ -1,0 +1,28 @@
+.android-download{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(290px,.65fr);gap:28px;padding:clamp(24px,5vw,46px);background:linear-gradient(135deg,#0f4a2d 0%,#17633c 54%,#267b49 100%);color:#fff;overflow:hidden;position:relative}
+.android-download::before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;right:-130px;top:-190px;background:rgba(118,220,132,.18)}
+.android-download-copy,.android-install-card{position:relative;z-index:1}
+.download-eyebrow{display:inline-flex;padding:8px 13px;border-radius:999px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);font-size:.8rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.android-download h2{margin:16px 0 12px;color:#fff;font-size:clamp(2rem,4vw,3.15rem);line-height:1.08}
+.android-download-copy>p{max-width:700px;color:#e1f2e6;line-height:1.7}
+.android-release-meta{display:grid;grid-template-columns:repeat(3,minmax(120px,1fr));gap:10px;margin:25px 0 20px}
+.android-release-meta>div{min-width:0;padding:13px;border-radius:13px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16)}
+.android-release-meta span,.android-release-meta strong{display:block}
+.android-release-meta span{margin-bottom:5px;color:#cce7d4;font-size:.72rem;font-weight:700;text-transform:uppercase}
+.android-release-meta strong{overflow-wrap:anywhere}
+.android-release-meta .release-hash{grid-column:1/-1}
+.android-release-meta code{display:block;color:#fff;font-size:.76rem;overflow-wrap:anywhere}
+.download-actions{display:flex;gap:11px;flex-wrap:wrap}
+.android-primary,.android-secondary{min-height:48px;display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:12px;text-decoration:none;font-weight:800}
+.android-primary{background:#fff;color:#0f4a2d;box-shadow:0 14px 30px rgba(0,0,0,.18)}
+.android-primary.disabled{opacity:.58;cursor:not-allowed}
+.android-secondary{border:1px solid rgba(255,255,255,.45);color:#fff}
+.download-status{font-size:.88rem}
+.android-install-card{padding:22px;border-radius:19px;background:#fff;color:#173b26;box-shadow:0 20px 46px rgba(6,42,23,.25)}
+.android-install-card img{display:block;margin:0 auto 18px;border-radius:10px;background:#fff;image-rendering:pixelated}
+.android-install-card h3{color:#174d28;margin:0 0 12px}
+.android-install-card ol{padding-left:21px;line-height:1.55}
+.android-install-card li{margin-bottom:8px}
+.android-install-card a{color:#1b6a3d;font-weight:800}
+.android-warning{padding:12px;border-radius:11px;background:#fff4d8;color:#714900;font-size:.87rem;line-height:1.5}
+@media(max-width:860px){.android-download{grid-template-columns:1fr}.android-install-card{max-width:none}.android-release-meta{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.android-download{padding:24px 17px}.android-release-meta{grid-template-columns:1fr}.android-release-meta .release-hash{grid-column:auto}.download-actions{display:grid}.android-primary,.android-secondary{width:100%;text-align:center}.android-install-card{padding:17px}.android-install-card img{width:160px;height:160px}}

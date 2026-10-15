@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "app_name": "ecoalerta-neilmurillo-2026",
+  "resource_group": "rg-ecoalerta-prod",
+  "app_service_plan": "asp-ecoalerta-prod",
+  "storage_account": "ecoalertabkp68b77884f8",
+  "appservice_container": "appservice-backups",
+  "supabase_container": "supabase-backups",
+  "retention_days": 30,
+  "budget_name": "presupuesto-ecoalerta",
+  "budget_amount": 20.0,
+  "budget_unit": "moneda de facturación",
+  "alert_thresholds": [
+    50,
+    75,
+    90,
+    100
+  ],
+  "alert_emails": [
+    "neildiazusb@gmail.com"
+  ],
+  "backup_sas_expires_utc": "2028-09-06T05:21:36Z",
+  "configured_at_utc": "2026-09-06T05:22:00.9640693+00:00"
+}

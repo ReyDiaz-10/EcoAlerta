@@ -1,0 +1,4 @@
+storePassword=REEMPLAZAR
+keyPassword=REEMPLAZAR
+keyAlias=ecoalerta
+storeFile=D:/EcoAlerta-Seguridad/android/ecoalerta-release.jks

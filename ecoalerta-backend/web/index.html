@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EcoAlerta - Portal Ciudadano</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="download.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <button id="help-float" class="help-float" aria-label="Ayuda">❓</button>
+
+  <header class="topbar">
+    <div class="brand">
+      <img src="assets/logo_ecoalerta.svg" alt="EcoAlerta" class="logo" />
+      <span class="brand-text">EcoAlerta</span>
+    </div>
+    <nav>
+      <a href="#hero">Inicio</a>
+      <a href="#report-form">Reportar</a>
+      <a href="#buscar">Buscar Radicado</a>
+      <a href="#descargar">Descargar app</a>
+      <a href="#sugerencias">Sugerencias</a>
+      <a href="admin.html" id="link-admin">Admin</a>
+      <button id="help-btn" class="help">❓</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="hero" class="hero panel hero-panel">
+      <div class="hero-copy">
+        <span class="hero-label">🌱 Protege tu ciudad con cada reporte</span>
+        <h1>Reporta problemas urbanos y ambientales de forma sencilla y segura</h1>
+        <p class="lead">Gracias por cuidar tu territorio. EcoAlerta convierte tu reporte en un aviso oficial para la entidad correcta y te notifica por correo con el seguimiento de tu caso.</p>
+        <div class="hero-buttons">
+          <button id="btn-start" class="primary">Iniciar reporte</button>
+          <button id="btn-mas-info" class="secondary">Ver cómo funciona</button>
+        </div>
+        <div class="hero-features">
+          <div class="feature-card">📧 Te avisamos por correo</div>
+          <div class="feature-card">📄 Generamos tu PDF oficial</div>
+          <div class="feature-card">🛰️ Ubicación automática</div>
+          <div class="feature-card">📷 Adjunta hasta 5 fotos</div>
+          <div class="feature-card">🔒 Sin registro necesario</div>
+          <div class="feature-card">💚 Aporta al cuidado colectivo</div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-brand-card">
+          <img src="assets/logo_ecoalerta.svg" alt="EcoAlerta" class="hero-logo" />
+          <p><strong>EcoAlerta</strong> te acompaña en cada paso para que tu reporte llegue con claridad y respaldo.</p>
+          <ul>
+            <li>📍 Ubicamos el incidente automáticamente</li>
+            <li>📷 Guardas evidencia con fotos</li>
+            <li>📤 Enviamos tu alerta al organismo responsable</li>
+            <li>📨 Recibes seguimiento y actualizaciones por correo</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="steps" class="panel step-panel">
+      <h2>Así funciona EcoAlerta</h2>
+      <div class="steps-grid">
+        <div class="step-card">1. 📍 Ubica el lugar exacto del problema y toma una foto clara.</div>
+        <div class="step-card">2. ✍️ Describe lo que sucede con detalle y selecciona el tipo de incidente.</div>
+        <div class="step-card">3. 📤 Envía el reporte y deja tu correo para recibir seguimiento.</div>
+        <div class="step-card">4. ✅ Recibe notificaciones por email y consulta tu radicado cuando quieras.</div>
+      </div>
+      <p class="steps-note">Cada reporte ayuda a mejorar el espacio público. ¡Tu aporte es importante y recibe respuesta!</p>
+    </section>
+
+    <section id="tips" class="panel report-types">
+      <h2>¿Qué puedes reportar con EcoAlerta?</h2>
+      <div class="report-types-grid">
+        <div class="report-type-card">🛣️ Huecos sobre la vía que generen un riesgo para los actores viales</div>
+        <div class="report-type-card">🚧 Separadores viales en mal estado que pueden generar un accidente</div>
+        <div class="report-type-card">🏕️ Asentamientos en lugares públicos como parques y zonas verdes</div>
+        <div class="report-type-card">🗑️ Puntos críticos de basura: sin contenedores y basura en lugares indebidos</div>
+        <div class="report-type-card">🌊 Represamiento de basuras en riachuelos, quebradas y cauces no habilitados</div>
+        <div class="report-type-card">🧱 Escombros en vía pública</div>
+        <div class="report-type-card">🚮 Falta de contenedores de basura en lugares designados</div>
+        <div class="report-type-card">⚠️ Contenedores de basura en mal estado que necesitan cambio</div>
+        <div class="report-type-card">🚴 Ciclorutas obstruidas o en mal estado</div>
+        <div class="report-type-card">🚗 Vehículos abandonados que deben moverse a espacios adecuados</div>
+      </div>
+      <div class="report-types-footer">
+        <p>Gracias por reportar con respeto y claridad. Tu correo asegura que podamos darte seguimiento responsable.</p>
+      </div>
+    </section>
+
+    <section id="report-form" class="panel">
+      <h3>Crear Reporte 📢</h3>
+      <form id="form-report">
+        <label>Descripción</label>
+        <textarea id="desc" required placeholder="Describe lo ocurrido..."></textarea>
+
+        <label for="direccion">Dirección del incidente</label>
+        <div class="address-group">
+          <input id="direccion" placeholder="Escribe la dirección o usa tu ubicación" autocomplete="street-address" />
+          <button id="btn-geocode-address" type="button" class="secondary">Buscar dirección 🔎</button>
+          <button id="btn-geolocate" type="button">Actualizar ubicación 📍</button>
+        </div>
+        <div id="location-status" class="location-status">Buscando ubicación...</div>
+        <input id="lat" type="hidden" />
+        <input id="lon" type="hidden" />
+
+        <label>Correo (opcional)</label>
+        <input id="correo" type="email" placeholder="tu@correo.com" />
+
+        <label>Imágenes (hasta 5)</label>
+        <input id="imagenes" type="file" accept=".jpg,.jpeg,.png,.webp,.heic,.heif,image/jpeg,image/png,image/webp,image/heic,image/heif" multiple />
+        <div id="analysis-status" class="result" style="display:none; padding: 14px 16px; margin-top: 12px;"></div>
+
+        <label class="consent-row">
+          <input id="acepta-datos" type="checkbox" required />
+          Acepto el tratamiento de los datos suministrados para gestionar este reporte.
+        </label>
+
+        <div class="actions">
+          <button type="submit" id="btn-submit-report" class="primary" disabled>Guardar y enviar reporte ✅</button>
+        </div>
+      </form>
+      <div id="report-result" class="result"></div>
+    </section>
+
+    <section id="buscar" class="panel search-panel">
+      <h3>Buscar Informe 🔎</h3>
+      <p class="search-desc">Consulta de forma segura con el radicado y el código privado entregados al enviar el reporte.</p>
+      <div class="search-row">
+        <input id="radicado-search" placeholder="RAD-AAAAMMDD-XXXXXXXX" aria-label="Número de radicado" />
+        <input id="codigo-search" type="password" placeholder="Código de consulta" aria-label="Código privado de consulta" />
+        <button id="btn-search" class="secondary" aria-label="Buscar">Buscar</button>
+      </div>
+      <div id="search-result" class="result"></div>
+    </section>
+
+    <section id="descargar" class="panel android-download" aria-labelledby="android-download-title">
+      <div class="android-download-copy">
+        <span class="download-eyebrow">Aplicación oficial para Android</span>
+        <h2 id="android-download-title">Lleva EcoAlerta en tu celular</h2>
+        <p>Descarga el APK firmado desde la versión oficial publicada en GitHub. La app se conecta de forma cifrada al mismo servicio de EcoAlerta en Azure.</p>
+        <div class="android-release-meta" aria-label="Información de la versión">
+          <div><span>Versión</span><strong id="android-version">2.3.2+4</strong></div>
+          <div><span>Tamaño</span><strong id="android-size">Por confirmar</strong></div>
+          <div><span>Publicación</span><strong id="android-date">Por confirmar</strong></div>
+          <div class="release-hash"><span>SHA-256</span><code id="android-sha">Se mostrará al publicar el APK</code></div>
+        </div>
+        <div class="download-actions">
+          <a id="android-download-button" class="android-primary disabled" href="#" aria-disabled="true">Descarga en preparación</a>
+          <a id="android-release-link" class="android-secondary" href="#" hidden target="_blank" rel="noopener noreferrer">Ver versión en GitHub</a>
+        </div>
+        <p id="android-release-status" class="download-status" role="status" aria-live="polite">La descarga se habilitará aquí cuando el APK oficial termine de publicarse.</p>
+      </div>
+
+      <aside class="android-install-card">
+        <img src="/api/distribucion/android/qr" alt="Código QR para abrir esta sección de descarga en el celular" width="184" height="184" loading="lazy" />
+        <h3>Cómo instalarla</h3>
+        <ol>
+          <li>Descarga el archivo APK desde este botón oficial.</li>
+          <li>Abre la descarga en tu teléfono Android.</li>
+          <li>Permite temporalmente instalar aplicaciones de esta fuente.</li>
+          <li>Instala EcoAlerta y vuelve a desactivar ese permiso.</li>
+        </ol>
+        <p class="android-warning"><strong>Importante:</strong> no desinstales la versión anterior para actualizar. Las futuras versiones se instalarán encima si conservan <code>com.ecoalerta.app</code> y la misma firma.</p>
+        <a href="privacidad.html">Leer política de privacidad y tratamiento de datos</a>
+      </aside>
+    </section>
+
+
+    <section id="sugerencias" class="panel">
+      <h3>Buzón de Sugerencias 📨</h3>
+      <form id="form-feedback">
+        <input id="fb-nombre" placeholder="Tu nombre (opcional)" />
+        <input id="fb-correo" type="email" placeholder="Tu correo (opcional)" />
+        <textarea id="fb-mensaje" placeholder="Escribe tu sugerencia o queja" required></textarea>
+        <div class="actions"><button type="submit" class="primary">Enviar sugerencia</button></div>
+      </form>
+      <div id="fb-result" class="result"></div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <p><a href="privacidad.html">Política de privacidad y tratamiento de datos</a></p>
+  </footer>
+
+  <div id="help-modal" class="modal hidden">
+    <div class="modal-card">
+      <h3>Ayuda / Instrucciones</h3>
+      <p>En esta web puedes:</p>
+      <ul>
+        <li>Enviar un reporte sin iniciar sesión ✅</li>
+        <li>Buscar el estado de tu radicado y descargar el PDF 📄</li>
+        <li>Dejar tu correo y recibir seguimiento por email 📧</li>
+        <li>Contribuir a una ciudad más segura y limpia 💚</li>
+      </ul>
+      <p>Gracias por reportar de manera responsable. Cada alerta ayuda al seguimiento y mejora de tu comunidad.</p>
+      <button id="close-help">Cerrar</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script src="download.js"></script>
+</body>
+</html>

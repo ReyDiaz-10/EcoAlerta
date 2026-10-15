@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0f4a2d" />
+  <title>Panel administrativo - EcoAlerta</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="admin.css" />
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
+</head>
+<body class="admin-page">
+  <a class="skip-link" href="#admin-content">Saltar al contenido</a>
+
+  <header class="admin-public-header">
+    <a class="admin-public-brand" href="./" aria-label="Volver al portal ciudadano">
+      <img src="assets/logo_ecoalerta.svg" alt="" />
+      <span><strong>EcoAlerta</strong><small>Administración segura</small></span>
+    </a>
+    <span id="connection-security" class="security-badge" aria-live="polite">Verificando conexión…</span>
+  </header>
+
+  <main id="login-view" class="admin-login-wrap">
+    <section class="admin-login-card" aria-labelledby="login-heading">
+      <div class="login-emblem" aria-hidden="true">EA</div>
+      <p class="eyebrow">Acceso protegido</p>
+      <h1 id="login-heading">Panel administrativo</h1>
+      <p>Ingresa para revisar, ubicar y descargar los reportes ciudadanos.</p>
+      <form id="login-form">
+        <label for="admin-user">Usuario</label>
+        <input id="admin-user" autocomplete="username" required />
+        <label for="admin-pass">Contraseña</label>
+        <input id="admin-pass" type="password" autocomplete="current-password" required />
+        <button class="admin-btn admin-btn-primary admin-btn-block" type="submit">Ingresar de forma segura</button>
+      </form>
+      <div id="login-result" class="admin-feedback" role="status" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <div id="admin-area" class="admin-app" hidden>
+    <div id="admin-drawer-backdrop" class="admin-drawer-backdrop" hidden></div>
+
+    <aside id="admin-sidebar" class="admin-sidebar" aria-label="Navegación administrativa">
+      <div class="admin-sidebar-brand">
+        <span class="admin-monogram" aria-hidden="true">EA</span>
+        <span><strong>EcoAlerta</strong><small>Panel de gestión</small></span>
+      </div>
+
+      <nav class="admin-nav">
+        <button class="admin-nav-link active" type="button" data-target="resumen" aria-current="page"><span aria-hidden="true">⌂</span>Resumen</button>
+        <button class="admin-nav-link" type="button" data-target="reportes"><span aria-hidden="true">▤</span>Reportes</button>
+        <button class="admin-nav-link" type="button" data-target="revision-ia"><span aria-hidden="true">✦</span>Revisión IA <span id="nav-review-count" class="nav-count">0</span></button>
+        <button class="admin-nav-link" type="button" data-target="entidades"><span aria-hidden="true">⌘</span>Entidades</button>
+        <button class="admin-nav-link" type="button" data-target="auditoria"><span aria-hidden="true">◷</span>Auditoría</button>
+        <button class="admin-nav-link" type="button" data-target="mapa"><span aria-hidden="true">⌖</span>Mapa</button>
+      </nav>
+
+      <div class="admin-sidebar-footer">
+        <button id="btn-toggle-password" class="admin-sidebar-action" type="button">Cambiar contraseña</button>
+        <button id="btn-logout" class="admin-sidebar-action danger" type="button">Cerrar sesión</button>
+        <a href="./" class="admin-sidebar-action">Portal ciudadano</a>
+      </div>
+    </aside>
+
+    <div class="admin-workspace">
+      <header class="admin-mobile-header">
+        <button id="btn-admin-menu" class="admin-menu-button" type="button" aria-controls="admin-sidebar" aria-expanded="false" aria-label="Abrir menú">☰</button>
+        <div><strong>EcoAlerta</strong><small>Panel administrativo</small></div>
+        <button id="btn-mobile-refresh" class="admin-icon-button" type="button" aria-label="Actualizar reportes">↻</button>
+      </header>
+
+      <main id="admin-content" class="admin-content">
+        <section id="resumen" class="admin-section admin-hero-section" data-section="resumen">
+          <div class="admin-page-heading">
+            <div>
+              <p class="eyebrow">Panel de control</p>
+              <h1>Buenos días, administrador</h1>
+              <p>Supervisa los reportes ciudadanos, su clasificación y trazabilidad.</p>
+            </div>
+            <div class="heading-actions">
+              <span id="pending-review-badge" class="pending-badge">0 pendientes de revisión</span>
+              <button id="btn-refresh" class="admin-btn admin-btn-secondary" type="button">↻ Actualizar</button>
+            </div>
+          </div>
+
+          <div id="dashboard-metrics" class="dashboard-metrics" aria-live="polite">
+            <article class="dashboard-stat"><span>Reportes recibidos</span><strong>—</strong><small>Total registrado</small></article>
+            <article class="dashboard-stat"><span>Clasificados</span><strong>—</strong><small>Con clasificación disponible</small></article>
+            <article class="dashboard-stat"><span>Revisión humana</span><strong>—</strong><small>Prioridad de atención</small></article>
+            <article class="dashboard-stat"><span>Correos entregados</span><strong>—</strong><small>Notificaciones exitosas</small></article>
+          </div>
+
+          <article class="admin-card recent-card">
+            <div class="admin-card-heading">
+              <div><h2>Reportes recientes</h2><p>Selecciona un caso para consultar su trazabilidad.</p></div>
+              <button class="admin-text-button" type="button" data-target="reportes">Ver todos</button>
+            </div>
+            <div class="admin-table-wrap compact-table-wrap">
+              <table class="admin-table" id="recent-table">
+                <thead><tr><th>Radicado</th><th>Categoría</th><th>Prioridad</th><th>Entidad sugerida</th><th>Estado</th><th></th></tr></thead>
+                <tbody><tr><td colspan="6">Cargando reportes…</td></tr></tbody>
+              </table>
+            </div>
+            <div id="recent-mobile" class="admin-mobile-list" aria-live="polite"></div>
+          </article>
+
+          <div id="color-summary" class="color-summary" aria-label="Resumen por nivel de alerta"></div>
+        </section>
+
+        <section id="reportes" class="admin-section" data-section="reportes">
+          <div class="admin-section-heading">
+            <div><p class="eyebrow">Gestión</p><h2>Todos los reportes</h2><p>Busca, filtra y abre cada reporte sin perder el contexto.</p></div>
+            <span id="visible-report-count" class="section-count">0 reportes</span>
+          </div>
+
+          <article class="admin-card filter-card">
+            <div class="admin-filters">
+              <label>Radicado<input id="filter-radicado" placeholder="Ej. ECO-2026…" inputmode="search" /></label>
+              <label>Nivel<select id="filter-color"><option value="">Todos</option><option value="red">Rojo · alta</option><option value="yellow">Amarillo · media</option><option value="green">Verde · baja</option></select></label>
+              <label>Zona o dirección<input id="filter-zone" placeholder="Barrio, comuna o dirección" inputmode="search" /></label>
+              <label>Palabra clave<input id="filter-key" placeholder="Categoría, entidad o descripción" inputmode="search" /></label>
+              <button id="btn-filter" class="admin-btn admin-btn-primary" type="button">Aplicar filtros</button>
+              <button id="btn-clear-filters" class="admin-btn admin-btn-secondary" type="button">Limpiar</button>
+            </div>
+          </article>
+
+          <article class="admin-card reports-card">
+            <div id="reports-status" class="admin-inline-status" role="status" aria-live="polite"></div>
+            <div class="admin-table-wrap">
+              <table class="admin-table" id="reports-table">
+                <thead><tr><th>Radicado</th><th>Origen</th><th>Fecha</th><th>Nivel</th><th>Entidad</th><th>Dirección</th><th>Acciones</th></tr></thead>
+                <tbody><tr><td colspan="7">Cargando reportes…</td></tr></tbody>
+              </table>
+            </div>
+            <div id="reports-mobile" class="admin-mobile-list" aria-live="polite"></div>
+          </article>
+        </section>
+
+        <section id="revision-ia" class="admin-section" data-section="revision-ia">
+          <div class="admin-section-heading">
+            <div><p class="eyebrow">Control humano</p><h2>Revisión de clasificación IA</h2><p>Casos no determinados, inválidos o marcados en revisión.</p></div>
+            <span id="review-count" class="section-count">0 pendientes</span>
+          </div>
+          <div id="review-list" class="review-grid admin-card" aria-live="polite"></div>
+        </section>
+
+        <section id="entidades" class="admin-section" data-section="entidades">
+          <div class="admin-section-heading">
+            <div><p class="eyebrow">Direccionamiento</p><h2>Entidades asignadas</h2><p>Distribución de los reportes actualmente cargados.</p></div>
+          </div>
+          <div id="entities-grid" class="entities-grid" aria-live="polite"></div>
+        </section>
+
+        <section id="auditoria" class="admin-section" data-section="auditoria">
+          <div class="admin-section-heading">
+            <div><p class="eyebrow">Trazabilidad</p><h2>Actividad reciente</h2><p>Abre un radicado para ver su historial completo de respuestas.</p></div>
+          </div>
+          <article class="admin-card"><div id="activity-list" class="activity-list" aria-live="polite"></div></article>
+        </section>
+
+        <section id="mapa" class="admin-section" data-section="mapa">
+          <div class="admin-section-heading map-heading">
+            <div><p class="eyebrow">Territorio</p><h2>Mapa de reportes</h2><p>Toca un marcador para identificar el radicado y su dirección.</p></div>
+            <div class="map-legend" aria-label="Leyenda"><span class="legend-red">Alta</span><span class="legend-yellow">Media</span><span class="legend-green">Baja</span></div>
+          </div>
+          <article class="admin-card map-card">
+            <p id="map-status" class="map-status" role="status" aria-live="polite" hidden></p>
+            <div id="map" role="application" aria-label="Mapa interactivo de reportes"></div>
+          </article>
+        </section>
+
+        <section id="report-detail" class="admin-section detail-section" data-section="detail" hidden>
+          <article class="admin-card">
+            <div class="admin-card-heading detail-heading">
+              <div><p class="eyebrow">Caso seleccionado</p><h2>Detalle del reporte</h2><p>Información completa y eventos de respuesta.</p></div>
+              <button id="btn-close-detail" class="admin-btn admin-btn-secondary" type="button">Cerrar detalle</button>
+            </div>
+            <div id="report-info" class="report-info-grid"></div>
+            <div id="report-timeline" class="report-timeline"></div>
+          </article>
+        </section>
+
+        <section id="password-panel" class="admin-section" data-section="password" hidden aria-labelledby="password-heading">
+          <article class="admin-card password-card">
+            <div class="admin-card-heading detail-heading">
+              <div><p class="eyebrow">Seguridad</p><h2 id="password-heading">Cambiar contraseña</h2><p>Al guardar se cerrarán las demás sesiones administrativas.</p></div>
+              <button id="btn-cancel-password" class="admin-btn admin-btn-secondary" type="button">Cancelar</button>
+            </div>
+            <form id="change-password-form">
+              <div class="password-grid">
+                <label>Contraseña actual<input id="current-password" type="password" autocomplete="current-password" required minlength="8" maxlength="256" /></label>
+                <label>Nueva contraseña<input id="new-password" type="password" autocomplete="new-password" required minlength="12" maxlength="72" /></label>
+                <label>Confirmar contraseña<input id="confirm-password" type="password" autocomplete="new-password" required minlength="12" maxlength="72" /></label>
+              </div>
+              <p class="password-help">Mínimo 12 caracteres con mayúscula, minúscula, número y símbolo.</p>
+              <button class="admin-btn admin-btn-primary" type="submit">Guardar contraseña</button>
+            </form>
+            <div id="password-result" class="admin-feedback" role="status" aria-live="polite"></div>
+          </article>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div id="admin-toast" class="admin-toast" role="status" aria-live="polite" hidden></div>
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

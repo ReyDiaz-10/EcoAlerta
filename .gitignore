@@ -1,0 +1,68 @@
+#======================================
+# Entornos virtuales y caché
+#=====================================
+.cache/
+.backups/
+.venv/
+__pycache__/
+
+#=====================================
+# Archivos ejecutables y APKs
+#=====================================
+*.apk
+*.ipa
+
+#=====================================
+# Archivos de respaldo y temporales
+#=====================================
+respaldo-*/
+*.tmp
+*.log
+
+#=====================================
+# Logs y errores de consola/despliegue
+#=====================================
+*-error.txt
+startup*.txt
+strip-debug-symbols.txt
+
+#=====================================
+# Variables de entorno y secretos
+#=====================================
+.env
+*.env.local
+
+#=====================================
+# Notas internas de desarrollo (opcional pero recomendado para limpiar la raíz)
+#=====================================
+DIAGNOSTICO_IA.md
+SOLUCION_ERROR_IA.md
+LEEME.txt
+CHECKLIST_ENTREGA_PRODUCCION.md
+CHANGELOG_PRODUCCION.md
+INSTRUCCIONES_*.md
+PILOTO_*.md
+PUBLICACION_*.md
+ACTUALIZAR_UBICACION_MOVIL.md
+EJEMPLOS_CORRECCIONES.md
+GUIA_ACTUALIZACION_2.1.md
+OPERACION_PRODUCCION.md
+PRIVACIDAD_APP_STORE.md
+REPORTE_REVISION_ESTRUCTURA.md
+RESUMEN_EJECUTIVO.md
+SEGURIDAD_DATOS_GOOGLE_PLAY.md
+VERIFICACION.md
+
+#=====================================
+# Carpetas de artefactos, respaldos y publicación
+#=====================================
+artifacts/
+backups/
+publicacion/
+
+#=====================================
+# Configuraciones JSON locales y scripts PowerShell intermedios
+#=====================================
+entity-emails-azure.json
+*.ps1
+DISTRIBUCION_ANDROID.md
