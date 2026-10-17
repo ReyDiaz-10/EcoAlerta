@@ -124,7 +124,10 @@ graph TD
     style IA fill:#ab47bc,stroke:#4a148c,stroke-width:2px,color:#fff
     style Cloud fill:#26c6da,stroke:#006064,stroke-width:2px,color:#fff
 
+style IA fill:#ab47bc,stroke:#4a148c,stroke-width:2px,color:#fff
+style Cloud fill:#26c6da,stroke:#006064,stroke-width:2px,color:#fff
 
+```
 
 ## 🚀 Instalación y ejecución
 
