@@ -91,6 +91,39 @@ La arquitectura exacta debe documentarse de acuerdo con el código y la versión
 | Persistencia de datos | Documentar el motor y la configuración utilizados en la versión publicada. |
 | Panel administrativo | Interfaz para consultar y gestionar reportes, según las funciones disponibles. |
 
+## 🏗️ Arquitectura del Sistema
+
+EcoAlerta está diseñado como un ecosistema integral bajo una arquitectura Cliente-Servidor impulsada por IA. El núcleo del sistema es una API centralizada que da servicio a múltiples plataformas frontend y delega el análisis de datos a modelos de lenguaje avanzado, todo desplegado en la nube.
+
+```mermaid
+graph TD
+    %% Nodos de interfaz de usuario
+    App[📱 App Móvil<br/>Flutter / Dart]
+    Web[💻 Portal Web<br/>Panel Administrativo]
+
+    %% Nodo del backend
+    API(⚙️ Backend API REST<br/>FastAPI / Python)
+
+    %% Nodos de procesamiento y datos
+    DB[(🗄️ Base de Datos)]
+    IA[🧠 Inteligencia Artificial<br/>Google Gemini API]
+    Cloud((☁️ Microsoft Azure))
+
+    %% Relaciones
+    App <==>|Peticiones HTTP/JSON| API
+    Web <==>|Peticiones HTTP/JSON| API
+    API <==>|Lectura / Escritura| DB
+    API <==>|Clasificación y Análisis| IA
+    API -.->|Despliegue y Hosting| Cloud
+
+    %% Estilos
+    style App fill:#42a5f5,stroke:#0d47a1,stroke-width:2px,color:#fff
+    style Web fill:#42a5f5,stroke:#0d47a1,stroke-width:2px,color:#fff
+    style API fill:#66bb6a,stroke:#1b5e20,stroke-width:2px,color:#fff
+    style DB fill:#ffa726,stroke:#e65100,stroke-width:2px,color:#fff
+    style IA fill:#ab47bc,stroke:#4a148c,stroke-width:2px,color:#fff
+    style Cloud fill:#26c6da,stroke:#006064,stroke-width:2px,color:#fff
+
 
 
 ## 🚀 Instalación y ejecución
@@ -117,7 +150,7 @@ com.ecoalerta.app
 
 
 ```text
-EcoAlerta-2.3.2+6-release.apk
+EcoAlerta-2.3.2.6-release.apk
 ```
 
 ## 📦 Distribución mediante GitHub Releases
